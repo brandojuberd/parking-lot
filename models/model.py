@@ -19,7 +19,7 @@ class ParkingLot:
 
   @plate_number.setter
   def plate_number(self, value):
-    self.__slot_number = value
+    self.__plate_number = value
 
   @staticmethod
   def create(capacity):
@@ -27,7 +27,43 @@ class ParkingLot:
     for i in range(int(capacity)):
       list_of_lot.append(ParkingLot(i+1, ))
     ParkingLot.save(list_of_lot)
-    
+    return  capacity
+  
+  @staticmethod
+  def park(plate_number):
+    data = ParkingLot.read()
+    allocated_lot_number = 0
+    for i in data:
+      if i.plate_number == "":
+        i.plate_number = plate_number
+        allocated_lot_number = i.slot_number
+        break
+    else:
+      return allocated_lot_number
+
+    ParkingLot.save(data)
+    return allocated_lot_number
+
+  @staticmethod
+  def leave(plate_number, hours):
+    data = ParkingLot.read()
+    leave_lot = {}
+
+    for i in data:
+      if i.plate_number == plate_number:
+        leave_lot = i
+        i.plate_number = ""
+        break
+    else:
+      return False
+
+    ParkingLot.save(data)
+    charge = 10
+    if int(hours) > 2:
+      charge += (int(hours) - 2) * 10
+    return {"charge": charge, "ParkingLot": leave_lot}
+
+
 
   @staticmethod
   def read():
