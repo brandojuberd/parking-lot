@@ -18,3 +18,7 @@ class View:
   @staticmethod
   def not_found(plate_number):
     print(f"Registration number {plate_number} not found")
+
+  @staticmethod
+  def status(message):
+    print(f"Slot No. Registration No.\r\n{message}")

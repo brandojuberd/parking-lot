@@ -31,7 +31,11 @@ class Controller:
 
   @staticmethod
   def status():
-    print("Slot No. Registration No. \r\n")
-    for i in result:
-      print(i.slot_number, i.plate_number)
+    data = ParkingLot.read()
+    message = ""
+    for i in data:
+      if(i.plate_number == ""):
+        continue
+      message = message + f"{i.slot_number}   {i.plate_number} \r\n"
+    View.status(message)
   

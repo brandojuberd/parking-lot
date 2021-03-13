@@ -7,6 +7,12 @@
 # This variable contains absolute path of this `parking_lot` script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
+n=1
+while read line; do
+python $DIR/../parking_lot/index.py $line
+n=$((n+1))
+done < $DIR/$1
+# python DIR/../index.py $1
 # Use DIR variable above to pinpoint your jar/executable/main class
 # e.g.
 # - if java
