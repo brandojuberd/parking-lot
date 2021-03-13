@@ -1,17 +1,7 @@
-# class Student:
-#   __schoolName = "XYZ School"
-  
-#   def __init__(self, name, age):
-#     self.__name = name
-#     self.__salary = age
-
-#   def __display(self):
-#     print("Private method")
-
-# student = Student("Brando", 20)
-# print(student._Student__name)
+from models.model import ParkingLot
 
 class Controller:
   @staticmethod
-  def park(): 
+  def create_parking_lot(capacity): 
+    ParkingLot.create(capacity)
     print("In Controller")
