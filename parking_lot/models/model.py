@@ -67,7 +67,7 @@ class ParkingLot:
 
   @staticmethod
   def read():
-    with open("../parking_lot/data/data.json", "r") as read_file:
+    with open("./parking_lot/data/data.json", "r") as read_file:
       # print(data.read())
       data = json.load(read_file)
       list_of_class = []
@@ -85,6 +85,6 @@ class ParkingLot:
           "plate_number": i.plate_number
         }
       )
-    with open("../parking_lot/data/data.json", "w") as write_file:
+    with open("./parking_lot/data/data.json", "w") as write_file:
       json.dump(data_json, write_file, indent= 2)
   
